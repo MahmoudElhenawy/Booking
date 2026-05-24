@@ -7,11 +7,11 @@ class ButtonChangeLanguage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {
+      onPressed: () async {
         if (context.locale.languageCode == 'ar') {
-          context.setLocale(const Locale('en'));
+          await context.setLocale(const Locale('en'));
         } else {
-          context.setLocale(const Locale('ar'));
+          await context.setLocale(const Locale('ar'));
         }
       },
 

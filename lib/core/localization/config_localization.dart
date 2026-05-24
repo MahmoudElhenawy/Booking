@@ -16,6 +16,8 @@ class ConfgLocalization extends StatelessWidget {
 
       startLocale: const Locale('ar'),
 
+      useOnlyLangCode: true,
+
       child: const Booking(),
     );
   }

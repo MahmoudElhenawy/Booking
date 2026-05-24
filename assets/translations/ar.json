@@ -1,5 +1,25 @@
 {
   "login": "تسجيل الدخول",
   "email": "البريد الإلكتروني",
-  "password": "كلمة المرور"
+  "password": "كلمة المرور",
+  "enter_your_email": "أدخل بريدك الإلكتروني",
+  "enter_your_password": "أدخل كلمة المرور",
+  "welcome_back": "مرحباً بك",
+  "create_account": "إنشاء حساب",
+  "register_subtitle": "أنشئ حسابك الجديد",
+  "full_name": "الاسم الكامل",
+  "enter_your_full_name": "أدخل اسمك الكامل",
+  "confirm_password": "تأكيد كلمة المرور",
+  "confirm_your_password": "أكد كلمة المرور",
+  "register": "تسجيل",
+  "no_account": "ليس لديك حساب؟ سجّل الآن",
+  "already_have_account": "لديك حساب بالفعل؟ سجّل الدخول",
+  "required_field": "هذا الحقل مطلوب",
+  "invalid_email": "من فضلك أدخل بريدًا صحيحًا",
+  "password_mismatch": "كلمتا المرور غير متطابقتين",
+  "invalid_credentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+  "email_already_exists": "البريد الإلكتروني مستخدم بالفعل",
+  "login_success": "تم تسجيل الدخول بنجاح",
+  "register_success": "تم إنشاء الحساب بنجاح",
+  "unknown_error": "حدث خطأ غير متوقع"
 }

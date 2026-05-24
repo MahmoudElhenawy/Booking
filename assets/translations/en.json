@@ -1,5 +1,25 @@
 {
   "login": "Login",
   "email": "Email",
-  "password": "Password"
+  "password": "Password",
+  "enter_your_email": "Enter your email",
+  "enter_your_password": "Enter your password",
+  "welcome_back": "Welcome Back",
+  "create_account": "Create Account",
+  "register_subtitle": "Create your new account",
+  "full_name": "Full Name",
+  "enter_your_full_name": "Enter your full name",
+  "confirm_password": "Confirm Password",
+  "confirm_your_password": "Confirm your password",
+  "register": "Register",
+  "no_account": "Don\u0027t have an account? Register",
+  "already_have_account": "Already have an account? Login",
+  "required_field": "This field is required",
+  "invalid_email": "Please enter a valid email",
+  "password_mismatch": "Passwords do not match",
+  "invalid_credentials": "Invalid email or password",
+  "email_already_exists": "Email already exists",
+  "login_success": "Logged in successfully",
+  "register_success": "Account created successfully",
+  "unknown_error": "Something went wrong"
 }
