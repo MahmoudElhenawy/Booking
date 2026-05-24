@@ -1,7 +1,7 @@
 import 'package:booking_app/features/auth/data/models/user_model.dart';
 
-class AuthFailure implements Exception {
-  AuthFailure(this.messageKey);
+class AuthException implements Exception {
+  AuthException(this.messageKey);
 
   final String messageKey;
 }
@@ -26,7 +26,7 @@ class FakeAuthDataSource {
     final user = _usersByEmail[key];
 
     if (user == null || user.password != password) {
-      throw AuthFailure('invalid_credentials');
+      throw AuthException('invalid_credentials');
     }
 
     return UserModel(id: user.id, name: user.name, email: user.email);
@@ -41,7 +41,7 @@ class FakeAuthDataSource {
 
     final key = email.trim().toLowerCase();
     if (_usersByEmail.containsKey(key)) {
-      throw AuthFailure('email_already_exists');
+      throw AuthException('email_already_exists');
     }
 
     final created = _FakeUser(

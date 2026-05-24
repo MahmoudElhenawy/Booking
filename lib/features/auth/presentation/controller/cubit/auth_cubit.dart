@@ -1,4 +1,3 @@
-import 'package:booking_app/features/auth/data/datasource/fake_auth_repository.dart';
 import 'package:booking_app/features/auth/domain/usecases/login_usecase.dart';
 import 'package:booking_app/features/auth/domain/usecases/register_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,16 +18,14 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> login({required String email, required String password}) async {
     emit(const AuthLoading());
 
-    try {
-      final user = await _loginUseCase(
-        LoginParams(email: email, password: password),
-      );
-      emit(AuthSuccess(user));
-    } on AuthFailure catch (error) {
-      emit(AuthError(error.messageKey));
-    } catch (_) {
-      emit(const AuthError('unknown_error'));
-    }
+    final result = await _loginUseCase(
+      LoginParams(email: email, password: password),
+    );
+
+    result.fold(
+      (failure) => emit(AuthError(failure.messageKey)),
+      (user) => emit(AuthSuccess(user)),
+    );
   }
 
   Future<void> register({
@@ -44,15 +41,13 @@ class AuthCubit extends Cubit<AuthState> {
 
     emit(const AuthLoading());
 
-    try {
-      final user = await _registerUseCase(
-        RegisterParams(name: name, email: email, password: password),
-      );
-      emit(AuthSuccess(user));
-    } on AuthFailure catch (error) {
-      emit(AuthError(error.messageKey));
-    } catch (_) {
-      emit(const AuthError('unknown_error'));
-    }
+    final result = await _registerUseCase(
+      RegisterParams(name: name, email: email, password: password),
+    );
+
+    result.fold(
+      (failure) => emit(AuthError(failure.messageKey)),
+      (user) => emit(AuthSuccess(user)),
+    );
   }
 }

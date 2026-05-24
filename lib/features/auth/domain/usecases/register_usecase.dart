@@ -1,5 +1,7 @@
+import 'package:booking_app/core/error/failures.dart';
 import 'package:booking_app/features/auth/domain/entities/user_entity.dart';
 import 'package:booking_app/features/auth/domain/repositories/auth_repository.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 class RegisterUseCase {
@@ -7,7 +9,7 @@ class RegisterUseCase {
 
   final AuthRepository _repository;
 
-  Future<UserEntity> call(RegisterParams params) {
+  Future<Either<Failure, UserEntity>> call(RegisterParams params) {
     return _repository.register(
       name: params.name,
       email: params.email,

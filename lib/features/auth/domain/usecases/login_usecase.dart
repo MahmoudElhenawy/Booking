@@ -1,5 +1,7 @@
+import 'package:booking_app/core/error/failures.dart';
 import 'package:booking_app/features/auth/domain/entities/user_entity.dart';
 import 'package:booking_app/features/auth/domain/repositories/auth_repository.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 class LoginUseCase {
@@ -7,7 +9,7 @@ class LoginUseCase {
 
   final AuthRepository _repository;
 
-  Future<UserEntity> call(LoginParams params) {
+  Future<Either<Failure, UserEntity>> call(LoginParams params) {
     return _repository.login(email: params.email, password: params.password);
   }
 }
