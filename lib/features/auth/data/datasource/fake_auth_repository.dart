@@ -8,10 +8,10 @@ class AuthException implements Exception {
 
 class FakeAuthDataSource {
   final Map<String, _FakeUser> _usersByEmail = {
-    'test@example.com': _FakeUser(
+    'mahmoud@example.com': _FakeUser(
       id: '1',
-      name: 'Test User',
-      email: 'test@example.com',
+      name: 'Mahmoud Elhenawy',
+      email: 'mahmoud@example.com',
       password: '123456',
     ),
   };

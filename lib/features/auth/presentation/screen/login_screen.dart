@@ -1,6 +1,7 @@
 import 'package:booking_app/core/utils/app_assets.dart';
 import 'package:booking_app/core/widgets/botton_change_language.dart';
 import 'package:booking_app/core/widgets/custom_button.dart';
+import 'package:booking_app/core/widgets/custom_snack_bar.dart';
 import 'package:booking_app/core/widgets/custom_text_field.dart';
 import 'package:booking_app/core/router/app_router.dart';
 import 'package:booking_app/features/auth/di/auth_di.dart';
@@ -39,15 +40,13 @@ class _LoginScreenState extends State<LoginScreen> {
       child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthError) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.messageKey.tr())));
+            CustomSnackBar.error(context, message: state.messageKey.tr());
           }
 
           if (state is AuthSuccess) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text('login_success'.tr())));
+            CustomSnackBar.success(context, message: 'login_success'.tr());
+
+            context.go(AppRouter.homeScreen);
           }
         },
         child: Scaffold(

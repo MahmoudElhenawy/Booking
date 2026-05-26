@@ -1,3 +1,4 @@
+import 'package:booking_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -9,6 +10,10 @@ class CustomTextField extends StatefulWidget {
     this.isPassword = false,
     this.controller,
     this.validator,
+    this.readOnly = false,
+    this.onTap,
+    this.prefixIcon,
+    this.suffixIcon,
     Key? key,
   }) : super(key: key);
 
@@ -19,6 +24,10 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword;
   final TextEditingController? controller;
   final String? Function(String?)? validator; // يستقبل الدالة الخاصة بالتحقق
+  final bool readOnly;
+  final VoidCallback? onTap;
+  final Icon? prefixIcon;
+  final Icon? suffixIcon;
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
@@ -34,33 +43,38 @@ class _CustomTextFieldState extends State<CustomTextField> {
       keyboardType: widget.inputType,
       obscureText: widget.isPassword ? _obscureText : false,
       onChanged: widget.onChanged,
+      readOnly: widget.readOnly,
+      onTap: widget.onTap,
       validator: widget.validator,
       decoration: InputDecoration(
         labelText: widget.labelText,
         hintText: widget.hintText,
-        hintStyle: const TextStyle(color: Color(0xFF6C63FF)),
+        hintStyle: const TextStyle(color: AppColors.grey),
+        filled: true,
+        fillColor: AppColors.fill,
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Color(0xFF6C63FF), width: 1),
+          borderSide: const BorderSide(color: AppColors.primary, width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Color(0xFF6C63FF), width: 2),
+          borderSide: const BorderSide(color: AppColors.primary, width: 2),
           borderRadius: BorderRadius.circular(10),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Colors.red,
+            color: AppColors.error,
             width: 2,
           ), // لو فيه خطأ يظهر أحمر
           borderRadius: BorderRadius.circular(10),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Colors.red,
+            color: AppColors.error,
             width: 2,
           ), // التركيز مع الخطأ
           borderRadius: BorderRadius.circular(10),
         ),
+        prefixIcon: widget.prefixIcon,
         suffixIcon: widget.isPassword
             ? IconButton(
                 icon: Icon(
@@ -72,7 +86,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   });
                 },
               )
-            : null,
+            : widget.suffixIcon,
       ),
     );
   }
